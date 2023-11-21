@@ -7,10 +7,11 @@ class CodeScreen(BasePage):
     prefix_label = (AppiumBy.ID, "text_input")
     # phone_number_label = (AppiumBy.XPATH, "//android.widget.EditText[@text='Twój kod z SMS']")
     # code_input = (AppiumBy.ACCESSIBILITY_ID, "auth-code-input")
-    code_input = (AppiumBy.XPATH,"//android.widget.EditText[@text='Twój kod z SMS']")
-    next_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='dalej']")
-    phone_number_label = (AppiumBy.XPATH, "//android.widget.TextView[contains(@text, 'Wysłaliśmy go na numer')]")
+    code_input = (AppiumBy.ACCESSIBILITY_ID,"auth-verification-code-input")
+    next_button = (AppiumBy.ACCESSIBILITY_ID, "auth-next-button")
+    phone_number_label = (AppiumBy.ACCESSIBILITY_ID, "auth-verification-phone-number-text")
     send_code_again = (AppiumBy.XPATH, '//android.widget.TextView[@text="Wyslij jeszcze raz"]')
+    back_button = (AppiumBy.ACCESSIBILITY_ID, "auth-back-button")
 
 
     def __init__(self, driver):

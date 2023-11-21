@@ -9,10 +9,11 @@ from Variables.variables import *
 class PhoneNumberScreen(BasePage):
     country_dropdown = (AppiumBy.XPATH, "//android.widget.EditText[contains(@text, '+48')]")
     # phone_number_input = (AppiumBy.ACCESSIBILITY_ID, "auth-phone-input")
-    phone_number_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Numer telefonu']")
+    phone_number_input = (AppiumBy.ACCESSIBILITY_ID, "auth-phone-number-input")
     # name_input = (AppiumBy.ACCESSIBILITY_ID, "-name-input") android.widget.EditText
     name_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Imię i nazwisko']")
-    next_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='dalej']")
+    next_button = (AppiumBy.ACCESSIBILITY_ID, "auth-next-button")
+    back_button = (AppiumBy.ACCESSIBILITY_ID, "auth-back-button")
     country_prefix_buttons = {
         '48': (AppiumBy.XPATH, "//android.widget.CheckedTextView[contains(@text, '+48')]"),
         '49': (AppiumBy.XPATH,

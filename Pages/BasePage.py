@@ -16,6 +16,7 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
+
     def click(self, locator_tuple):
         element = WebDriverWait(self.driver, WAIT_TIME).until(
             EC.presence_of_element_located(locator_tuple)
@@ -44,3 +45,4 @@ class BasePage:
         text = element.text
         log.logger.info(f"Getting text from an element {locator_tuple}")
         return text
+

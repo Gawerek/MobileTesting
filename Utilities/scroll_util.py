@@ -1,16 +1,25 @@
-
+from appium.webdriver.common.appiumby import AppiumBy
 
 class ScrollUtil:
 
+    # @staticmethod
+    # def scrollToTextByAndroidUIAutomator(text,driver):
+    #     driver.find_element_by_android_uiautomator("new UiScrollable(new UiSelector().scrollable(true).instance("
+    #                                                "0)).scrollIntoView(new UiSelector().textContains(\""+text+"\").instance(0))").click()
+
+
+
     @staticmethod
-    def scrollToTextByAndroidUIAutomator(text,driver):
-        driver.find_element_by_android_uiautomator("new UiScrollable(new UiSelector().scrollable(true).instance("
-                                                   "0)).scrollIntoView(new UiSelector().textContains(\""+text+"\").instance(0))").click()
+    def scrollToTextByAndroidUIAutomator(text, driver):
+        ui_automator_string = f"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"{text}\").instance(0))"
+        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, ui_automator_string)#.click()
+
 
     @staticmethod
     def swipeUp(howManySwipes,driver):
         for i in range(1,howManySwipes+1):
             driver.swipe(514, 600, 514, 200, 1000)
+
 
     @staticmethod
     def swipeDown(howManySwipes,driver):

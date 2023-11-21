@@ -3,7 +3,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 from Pages.LoginOrRegisterScreen import LoginOrRegisterScreen
 
 class GeneralLoginScreen(BasePage):
-    login_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='Zaloguj']")
+    login_button = (AppiumBy.ACCESSIBILITY_ID, "no-content-settings-login-button")
 
     def __init__(self, driver):
         super().__init__(driver)
