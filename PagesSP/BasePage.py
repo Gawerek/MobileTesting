@@ -46,3 +46,9 @@ class BasePage:
         log.logger.info(f"Getting text from an element {locator_tuple}")
         return text
 
+    def clear_field(self, locator_tuple):
+        element = WebDriverWait(self.driver, WAIT_TIME).until(
+            EC.presence_of_element_located(locator_tuple)
+        )
+        element.clear()
+        log.logger.info(f"Cleared text from element with locator: {locator_tuple}")

@@ -27,6 +27,20 @@ def appium_driver(request):
     driver.quit()
 
 
+@pytest.fixture(scope="function")
+def appium_driver_SP(request):
+    desired_caps = {}
+    desired_caps['platformName'] = 'Android'
+    desired_caps['deviceName'] = 'Android'
+    desired_caps['appPackage'] = 'bbox.sp.pl.app'
+    desired_caps['appActivity'] = '.MainActivity'
+    desired_caps['noReset'] = True
+    driver = webdriver.Remote('http://localhost:4725/wd/hub', desired_caps)
+    request.cls.driver = driver
+    driver.implicitly_wait(10)
+    yield driver
+    driver.quit()
+
 @pytest.fixture()
 def log_on_failure(request, appium_driver):
     yield
