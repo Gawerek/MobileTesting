@@ -1,5 +1,5 @@
 import time
-from .VisitsScreen import VisitsScreen
+
 
 from .BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy

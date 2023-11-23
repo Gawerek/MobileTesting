@@ -1,6 +1,6 @@
-import allure
+# import allure
 import pytest
-from allure_commons.types import AttachmentType
+# from allure_commons.types import AttachmentType
 from appium import webdriver
 
 
@@ -41,10 +41,10 @@ def appium_driver_SP(request):
     yield driver
     driver.quit()
 
-@pytest.fixture()
-def log_on_failure(request, appium_driver):
-    yield
-    item = request.node
-    driver = appium_driver
-    if item.rep_call.failed:
-        allure.attach(driver.get_screenshot_as_png(), name="screenshot", attachment_type=AttachmentType.PNG)
+# @pytest.fixture()
+# def log_on_failure(request, appium_driver):
+#     yield
+#     item = request.node
+#     driver = appium_driver
+#     if item.rep_call.failed:
+#         allure.attach(driver.get_screenshot_as_png(), name="screenshot", attachment_type=AttachmentType.PNG)
