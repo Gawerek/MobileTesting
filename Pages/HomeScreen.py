@@ -3,6 +3,7 @@ from Pages.BasePage import BasePage
 from Pages.GeneralLoginScreen import GeneralLoginScreen
 from Pages.SettingsScreen import SettingsScreen
 from Pages.SearchScreen import SearchScreen
+from Pages.VisitsScreen import VisitsScreen
 from appium.webdriver.common.appiumby import AppiumBy
 
 
@@ -22,7 +23,7 @@ class HomeScreen(BasePage):
 
     def go_to_visit(self):
         self.click(self.visit_tab_locator)
-        # return VillasScreen(self.driver)
+        return VisitsScreen(self.driver)
 
     def go_to_chat(self):
         self.click(self.chat_tab_locator)

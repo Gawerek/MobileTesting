@@ -11,8 +11,8 @@ class SettingsScreen(BasePage):
     log_out_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='wyloguj się']")
     confirmation_yes_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='tak']")
     confirmation_no_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='nie']")
-    phone_number_label=(AppiumBy.XPATH,"//android.widget.TextView[contains(@text,'Numer telefonu:')]")
-    name_label=(AppiumBy.XPATH,"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView[1]")
+    phone_number_label = (AppiumBy.XPATH,"//android.widget.TextView[contains(@text,'Numer telefonu:')]")
+    name_label = (AppiumBy.ACCESSIBILITY_ID,"settings-name-text")
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -28,7 +28,7 @@ class SettingsScreen(BasePage):
         print(name_text)
         assert assert_name in name_text
 
-    def delete_account(self,delete=True):
+    def delete_account(self, delete=True):
         self.click(self.delete_button)
         if delete:
             self.click(self.confirmation_yes_button)

@@ -11,4 +11,13 @@ from Utilities import dataProvider
 class Test_ActionAgainstVisits(BaseTestSP):
     def test_action_against_visits(self):
         home = HomeScreen(self.driver)
-        home.go_to_news()
+        news = home.go_to_news()
+
+        news.accept_visit()
+
+        news.click_more(1)
+        news.reject_visit()
+
+        news.click_more(0)
+        news.cancel_visit()
+

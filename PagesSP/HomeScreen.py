@@ -1,6 +1,9 @@
+
+
 from .BasePage import BasePage
 
 from .NewsScreen import NewsScreen
+from .CalendarScreen import CalendarScreen
 from appium.webdriver.common.appiumby import AppiumBy
 
 
@@ -20,6 +23,7 @@ class HomeScreen(BasePage):
 
     def go_to_calendar(self):
         self.click(self.calendar_tab_locator)
+        return CalendarScreen(self.driver)
 
 
     def go_to_chat(self):

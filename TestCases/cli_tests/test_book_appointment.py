@@ -26,43 +26,73 @@ class Test_BookAppointment(BaseTest):
 
     ])
     # Add more test cases as needed
+    # def test_book_appointment(self, service_info, name, service_type, address):
+    #     home = HomeScreen(self.driver)
+    #     search = home.go_to_search()
+    #     for x in range(0, 8):
+    #         print(x)
+    #         if x >1:
+    #             search.clear_search_bar()
+    #         map_screen = search.search_professionalist_or_service(name)
+    #         # map_screen.assert_name(name)
+    #         sp_profile_screen = map_screen.click_on_check_services()
+    #
+    #         # Handling different types of service booking
+    #         if service_info[0] == "direct":
+    #             service = service_info[1]
+    #             book_visit_screen = sp_profile_screen.book_service(service)
+    #         elif service_info[0] == "category_subcategory":
+    #             category = service_info[1]
+    #             subcategory = service_info[2]
+    #             ScrollUtil.swipeDown(2, self.drvier)
+    #             sp_profile_screen.select_service_category(category)
+    #             book_visit_screen = sp_profile_screen.book_service(subcategory)
+    #
+    #         # Handling mobile service type with address
+    #         if service_type == "mobile":
+    #             assert address is not None, "Address must be provided for mobile service"
+    #             ScrollUtil.scrollToTextByAndroidUIAutomator("usługi mobilne", self.driver)
+    #             book_visit_screen.configure_mobile_visits(address)
+    #
+    #         # Rest of the booking process
+    #         ScrollUtil.scrollToTextByAndroidUIAutomator("zarezerwuj", self.driver)
+    #         confirmation_screen = book_visit_screen.click_book_button()
+    #         confirmation_screen.click_go_to_visit_list()
+    #         time.sleep(1)
+    #         home.go_to_search()
+
+
+
+
     def test_book_appointment(self, service_info, name, service_type, address):
         home = HomeScreen(self.driver)
         search = home.go_to_search()
-        for x in range(0, 8):
-            print(x)
-            if x >1:
-                search.clear_search_bar()
-            map_screen = search.search_professionalist_or_service(name)
-            # map_screen.assert_name(name)
-            sp_profile_screen = map_screen.click_on_check_services()
 
-            # Handling different types of service booking
-            if service_info[0] == "direct":
-                service = service_info[1]
-                book_visit_screen = sp_profile_screen.book_service(service)
-            elif service_info[0] == "category_subcategory":
-                category = service_info[1]
-                subcategory = service_info[2]
-                ScrollUtil.swipeDown(2, self.drvier)
-                sp_profile_screen.select_service_category(category)
-                book_visit_screen = sp_profile_screen.book_service(subcategory)
+        search.clear_search_bar()
+        map_screen = search.search_professionalist_or_service(name)
+        # map_screen.assert_name(name)
+        sp_profile_screen = map_screen.click_on_check_services()
 
-            # Handling mobile service type with address
-            if service_type == "mobile":
-                assert address is not None, "Address must be provided for mobile service"
-                ScrollUtil.scrollToTextByAndroidUIAutomator("usługi mobilne", self.driver)
-                book_visit_screen.configure_mobile_visits(address)
+        # Handling different types of service booking
+        if service_info[0] == "direct":
+            service = service_info[1]
+            book_visit_screen = sp_profile_screen.book_service(service)
+        elif service_info[0] == "category_subcategory":
+            category = service_info[1]
+            subcategory = service_info[2]
+            ScrollUtil.swipeDown(2, self.drvier)
+            sp_profile_screen.select_service_category(category)
+            book_visit_screen = sp_profile_screen.book_service(subcategory)
 
-            # Rest of the booking process
-            ScrollUtil.scrollToTextByAndroidUIAutomator("zarezerwuj", self.driver)
-            confirmation_screen = book_visit_screen.click_book_button()
-            confirmation_screen.click_go_to_visit_list()
-            time.sleep(1)
-            home.go_to_search()
+        # Handling mobile service type with address
+        if service_type == "mobile":
+            assert address is not None, "Address must be provided for mobile service"
+            ScrollUtil.scrollToTextByAndroidUIAutomator("usługi mobilne", self.driver)
+            book_visit_screen.configure_mobile_visits(address)
 
-
-
-
-
+        # Rest of the booking process
+        confirmation_screen = book_visit_screen.click_book_button()
+        confirmation_screen.click_go_to_visit_list()
+        time.sleep(1)
+        home.go_to_search()
 

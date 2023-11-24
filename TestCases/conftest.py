@@ -3,6 +3,22 @@ import pytest
 # from allure_commons.types import AttachmentType
 from appium import webdriver
 
+import pytest
+from faker import Faker
+import random
+
+# Function to generate random contact
+def generate_random_contact():
+    faker = Faker()
+    name = faker.name()
+    phone_number = ''.join([str(random.randint(0, 9)) for _ in range(9)])
+    return name, phone_number
+
+# Fixture to provide random contact data
+@pytest.fixture(scope="module")
+def random_contact():
+    return generate_random_contact()
+
 
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
 def pytest_runtest_makereport(item, call):

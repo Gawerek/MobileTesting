@@ -24,3 +24,4 @@ class MapScreen(BasePage):
     def click_on_check_services(self):
         self.click(self.check_services)
         return SpProfileScreen(self.driver)
+

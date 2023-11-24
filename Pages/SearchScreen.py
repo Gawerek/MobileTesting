@@ -17,7 +17,7 @@ class SearchScreen(BasePage):
     events_group = (AppiumBy.ACCESSIBILITY_ID, "undefined-Eventy")
     barber_group = (AppiumBy.ACCESSIBILITY_ID, "undefined-Barber")
     massage_group = (AppiumBy.ACCESSIBILITY_ID, "undefined-Masaż")
-    search_bar = (AppiumBy.XPATH, "//android.widget.EditText[@text='Wyszukaj usługę lub profesjonalistę']")
+    search_bar = (AppiumBy.XPATH, "//android.widget.EditText")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -31,3 +31,6 @@ class SearchScreen(BasePage):
 
     def select_service(self):
         self.click(self.nails_group)
+
+    def clear_search_bar(self):
+        self.clear_field(self.search_bar)
