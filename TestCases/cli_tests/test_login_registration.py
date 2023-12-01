@@ -17,7 +17,7 @@ from Variables.variables import *
 class Test_RegistrationAndLogin(BaseTest):
 
     def test_registration(self, phone_number_param, change_country, country_code, name):
-        home = HomeScreen(self.driver)
+        home = HomeScreen(self.driver_cli)
         settings_login = home.go_to_settings_login()
         login_or_registration = settings_login.click_general_login_button()
         phone_number = login_or_registration.click_login_or_register(registration=True)
@@ -28,7 +28,7 @@ class Test_RegistrationAndLogin(BaseTest):
         settings.log_out_account()
 
     def test_login(self, phone_number_param, change_country, country_code, name):
-        home = HomeScreen(self.driver)
+        home = HomeScreen(self.driver_cli)
         settings = home.go_to_settings_login()
         login_or_registration = settings.click_general_login_button()
         phone_number = login_or_registration.click_login_or_register()

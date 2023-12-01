@@ -3,6 +3,7 @@ import pytest
 # from allure_commons.types import AttachmentType
 from appium import webdriver
 
+
 import pytest
 from faker import Faker
 import random
@@ -33,8 +34,9 @@ def appium_driver(request):
     desired_caps = {}
     desired_caps['platformName'] = 'Android'
     desired_caps['deviceName'] = 'Android'
-    desired_caps['appPackage'] = 'bbox.pl.client.app'
-    desired_caps['appActivity'] = '.MainActivity'
+    desired_caps['automationName'] = 'uiautomator2'
+    desired_caps['appPackage'] = 'bbox.pl.client.app.development'
+    desired_caps['appActivity'] = 'bbox.pl.client.app.MainActivity'
     desired_caps['noReset'] = True
     driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
     request.cls.driver = driver
@@ -48,8 +50,9 @@ def appium_driver_SP(request):
     desired_caps = {}
     desired_caps['platformName'] = 'Android'
     desired_caps['deviceName'] = 'Android'
-    desired_caps['appPackage'] = 'bbox.sp.pl.app'
-    desired_caps['appActivity'] = '.MainActivity'
+    # desired_caps['appPackage'] = 'bbox.sp.pl.app'
+    desired_caps['appPackage'] = 'bbox.sp.pl.app.development'
+    desired_caps['appActivity'] = 'bbox.sp.pl.app.MainActivity'
     desired_caps['noReset'] = True
     driver = webdriver.Remote('http://localhost:4725/wd/hub', desired_caps)
     request.cls.driver = driver

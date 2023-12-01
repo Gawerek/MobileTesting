@@ -1,17 +1,18 @@
 
 
-from .BasePage import BasePage
+from .BasePageSP import BasePageSP
+from .ClientsScreenSP import ClientsScreen
 
-from .NewsScreen import NewsScreen
-from .CalendarScreen import CalendarScreen
+from .NewsScreenSP import NewsScreenSP
+from .CalendarScreenSP import CalendarScreenSP
 from appium.webdriver.common.appiumby import AppiumBy
 
 
-class HomeScreen(BasePage):
+class HomeScreenSP(BasePageSP):
     news_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'ROUTE_DASHBOARD')
     calendar_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'ROUTE_VISIT_CALENDAR')
     chat_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'ROUTE_CHANNEL_LIST')
-    favourites_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'CLIENTS_NAVIGATOR')
+    clients_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'CLIENTS_NAVIGATOR')
     profile_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'PROFILE_NAVIGATOR')
 
     def __init__(self, driver):
@@ -19,11 +20,11 @@ class HomeScreen(BasePage):
 
     def go_to_news(self):
         self.click(self.news_tab_locator)
-        return NewsScreen(self.driver)
+        return NewsScreenSP(self.driver)
 
     def go_to_calendar(self):
         self.click(self.calendar_tab_locator)
-        return CalendarScreen(self.driver)
+        return CalendarScreenSP(self.driver)
 
 
     def go_to_chat(self):
@@ -31,12 +32,12 @@ class HomeScreen(BasePage):
 
 
     def go_to_clients(self):
-        self.click(self.favourites_tab_locator)
-        # return VillasScreen(self.driver)
+        self.click(self.clients_tab_locator)
+        return ClientsScreen(self.driver)
 
     def go_to_profile(self):
-        self.click(self.settings_tab_locator)
-        return SettingsScreen(self.driver)
+        self.click(self.profile_tab_locator)
+        return (self.driver)
 
     def go_to_settings_login(self):
         self.click(self.settings_tab_locator)

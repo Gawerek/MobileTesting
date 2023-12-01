@@ -1,16 +1,16 @@
 import time
 from Utilities.scroll_util import *
-from .BasePage import BasePage
+from .BasePageSP import BasePageSP
 from appium.webdriver.common.appiumby import AppiumBy
 
 from Variables.variables import *
 
 
-class ManualVisitScreen(BasePage):
+class ManualVisitScreenSP(BasePageSP):
     nails_category_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='Paznokcie']")
     hybrid_manicure_category_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='manicure hybrydowy']")
     barber_category_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='Barber']")
-    save_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='zapisz']")
+    save_button = (AppiumBy.XPATH, "//android.widget.TextView[contains(@text, 'zapisz')]")
     mobile_type_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='z dojazdem do klienta']")
     client_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Wybierz lub wyszukaj klienta']")
     phone_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Podaj numer telefonu']")

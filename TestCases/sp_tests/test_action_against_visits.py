@@ -3,14 +3,14 @@ import pytest
 import time
 from TestCases.BaseTest import BaseTestSP
 
-from PagesSP.HomeScreen import HomeScreen
+from PagesSP.HomeScreenSP import HomeScreenSP
 
 from Utilities import dataProvider
 
 
 class Test_ActionAgainstVisits(BaseTestSP):
     def test_action_against_visits(self):
-        home = HomeScreen(self.driver)
+        home = HomeScreenSP(self.driver)
         news = home.go_to_news()
 
         news.accept_visit()

@@ -10,3 +10,16 @@ class BaseTest:
 @pytest.mark.usefixtures("appium_driver_SP")
 class BaseTestSP:
     pass
+
+
+# class CombinedBaseTest(BaseTest, BaseTestSP):
+#     pass
+
+
+import pytest
+
+@pytest.mark.usefixtures("appium_driver", "appium_driver_SP")
+class CombinedBaseTest:
+    def __init__(self, driver1, driver2):
+        self.driver1 = driver1
+        self.driver2 = driver2

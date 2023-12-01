@@ -1,12 +1,12 @@
 import time
 
 
-from .BasePage import BasePage
+from .BasePageSP import BasePageSP
 from appium.webdriver.common.appiumby import AppiumBy
 
 
 from Variables.variables import *
-class NewsScreen(BasePage):
+class NewsScreenSP(BasePageSP):
     accept_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='Akceptuj']")
     more_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='Więcej']")
     reject_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='Odrzuć']")
