@@ -1,4 +1,4 @@
-2023-11-17 12:50:50,209 - BasePage.py:[25] - [INFO] - Clicked on element with locator: ('accessibility id', 'cli-search-tab')
-2023-11-17 12:50:51,258 - BasePage.py:[39] - [INFO] - Typed Magic Nails in element with locator: ('xpath', "//android.widget.EditText[@text='Wyszukaj us³ugê lub profesjonalistê']")
-2023-11-17 12:51:57,762 - BasePage.py:[25] - [INFO] - Clicked on element with locator: ('accessibility id', 'cli-search-tab')
-2023-11-17 12:52:04,940 - BasePage.py:[39] - [INFO] - Typed Magic Nails in element with locator: ('xpath', "//android.widget.EditText[@text='Wyszukaj us³ugê lub profesjonalistê']")
+2023-11-17 12:50:50,209 - BasePageSP.py:[25] - [INFO] - Clicked on element with locator: ('accessibility id', 'cli-search-tab')
+2023-11-17 12:50:51,258 - BasePageSP.py:[39] - [INFO] - Typed Magic Nails in element with locator: ('xpath', "//android.widget.EditText[@text='Wyszukaj usï¿½ugï¿½ lub profesjonalistï¿½']")
+2023-11-17 12:51:57,762 - BasePageSP.py:[25] - [INFO] - Clicked on element with locator: ('accessibility id', 'cli-search-tab')
+2023-11-17 12:52:04,940 - BasePageSP.py:[39] - [INFO] - Typed Magic Nails in element with locator: ('xpath', "//android.widget.EditText[@text='Wyszukaj usï¿½ugï¿½ lub profesjonalistï¿½']")

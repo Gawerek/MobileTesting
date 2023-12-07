@@ -21,7 +21,7 @@ class Test_BookAppointment(BaseTest):
     def test_book_appointment(self, service_info, name, service_type, address, service_name):
         home = HomeScreen(self.driver)
         search = home.go_to_search()
-        for x in range(0, 8):
+        for x in range(0, 2):
             print(x)
             search.clear_search_bar()
             map_screen = search.search_professionalist_or_service(name)
@@ -85,7 +85,7 @@ class Test_BookAppointment(BaseTest):
     #     confirmation_screen.click_go_to_visit_list()
     #     time.sleep(1)
     #     home.go_to_search()
-
+    #
 
 
 

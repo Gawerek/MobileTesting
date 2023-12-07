@@ -9,15 +9,15 @@ from Variables.variables import *
 
 
 @pytest.mark.parametrize("phone_number_param,change_country,country_code,name", [
-    ("999666313", True, "380", "hnJohnJohnJohnJohnJohnJoh"),
-    ("999666321", True, "48", "山田山田山田"),
-    ("999666342", False, None, "ЖанЖан"),
-    ("999666334", True, "421", "John\tSmith\nDoe"),
-    ("999666335", True, "43", "GrźżeGółąęń$%123")])
+    ("899666313", True, "380", "hnJohnJohnJohnJohnJohnJoh"),
+    ("799666321", True, "48", "山田山田山田"),
+    ("699666342", False, None, "ЖанЖан"),
+    ("749666334", True, "421", "John\tSmith\nDoe"),
+    ("459666335", True, "43", "GrźżeGółąęń$%123")])
 class Test_RegistrationAndLogin(BaseTest):
 
     def test_registration(self, phone_number_param, change_country, country_code, name):
-        home = HomeScreen(self.driver_cli)
+        home = HomeScreen(self.driver)
         settings_login = home.go_to_settings_login()
         login_or_registration = settings_login.click_general_login_button()
         phone_number = login_or_registration.click_login_or_register(registration=True)
@@ -28,7 +28,7 @@ class Test_RegistrationAndLogin(BaseTest):
         settings.log_out_account()
 
     def test_login(self, phone_number_param, change_country, country_code, name):
-        home = HomeScreen(self.driver_cli)
+        home = HomeScreen(self.driver)
         settings = home.go_to_settings_login()
         login_or_registration = settings.click_general_login_button()
         phone_number = login_or_registration.click_login_or_register()

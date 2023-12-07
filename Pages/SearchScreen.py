@@ -18,6 +18,9 @@ class SearchScreen(BasePage):
     barber_group = (AppiumBy.ACCESSIBILITY_ID, "undefined-Barber")
     massage_group = (AppiumBy.ACCESSIBILITY_ID, "undefined-Masaż")
     search_bar = (AppiumBy.XPATH, "//android.widget.EditText")
+    hair_category = "search-service-type-item-accordion-2000000"
+    hair_all_services = "search-service-type-item-2000000"
+    hair_cut_female = "search-service-type-item-2001000"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -34,3 +37,5 @@ class SearchScreen(BasePage):
 
     def clear_search_bar(self):
         self.clear_field(self.search_bar)
+
+
