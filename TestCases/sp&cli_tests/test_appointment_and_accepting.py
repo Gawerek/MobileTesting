@@ -1,11 +1,11 @@
 from Utilities.scroll_util import ScrollUtil
 import pytest
 import time
-from TestCases.BaseTest import BaseTestSP
+from TestCases.BaseTest import BaseTestSP, BaseTest
 from TestCases.BaseTest import CombinedBaseTest
 from PagesSP.HomeScreenSP import HomeScreenSP
 
-from Utilities import dataProvider
+from Utilities import dataProvider, app_manager
 from Utilities.scroll_util import ScrollUtil
 import pytest
 import time
@@ -25,23 +25,26 @@ from Utilities import dataProvider
 
 
 
-class Test_BookAppointmentAndAccept:
+class Test_BookAppointmentAndAccept(BaseTest):
 
 
     @pytest.mark.parametrize("service_info, name, service_type, address", [
-        (("direct", "japan_manicure"), "Magic Nails SP", "mobile", "Marszałkowska, Warszawa"),
-        (("direct", "japan_manicure"), "Magic Nails SP", "stationary", None),
+        (("direct", "japan_manicure"), "Magic Nails", "mobile", "Marszałkowska, Warszawa"),
+        (("direct", "japan_manicure"), "Magic Nails", "stationary", None),
 
     ])
-    def test_book_appointment(self, service_info, name, service_type, address, appium_driver, appium_driver_SP):
-        home = HomeScreen(self.appium_driver)
+    def test_book_appointment(self, service_info, name, service_type, address):
+        manager = app_manager.AppManager(self.driver)
+        # manager.launch_cli_app()
+
+        home = HomeScreen(self.driver)
         search = home.go_to_search()
 
         search.clear_search_bar()
         map_screen = search.search_professionalist_or_service(name)
         # map_screen.assert_name(name)
         sp_profile_screen = map_screen.click_on_check_services()
-
+        manager.launch_sp_app()
         # Handling different types of service booking
         if service_info[0] == "direct":
             service = service_info[1]
@@ -64,7 +67,8 @@ class Test_BookAppointmentAndAccept:
         confirmation_screen.click_go_to_visit_list()
         time.sleep(1)
         home.go_to_search()
-        home_SP = HomeScreenSP(self.appium_driver_SP)
+        app_manager.AppManager.launch_sp_app()
+        home_SP = HomeScreenSP(self.appium_driver)
         news_SP = home_SP.go_to_news()
 
         news_SP.accept_visit()
