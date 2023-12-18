@@ -1,6 +1,6 @@
-from Pages.BasePage import BasePage
+from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
-from Pages.LoginOrRegisterScreen import LoginOrRegisterScreen
+from PagesCLI.LoginOrRegisterScreen import LoginOrRegisterScreen
 
 class GeneralLoginScreen(BasePage):
     login_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='zaloguj się']")

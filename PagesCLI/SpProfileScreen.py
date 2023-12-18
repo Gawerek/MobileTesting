@@ -1,14 +1,14 @@
 import time
 
-from Pages.BasePage import BasePage
+from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
-from Pages.BookVisitScreen import BookVisitScreen
+from PagesCLI.BookVisitScreen import BookVisitScreen
 
 from Variables.variables import *
 
 class SpProfileScreen(BasePage):
-    japan_manicure = (AppiumBy.ACCESSIBILITY_ID, "profile-schedule-button-1003000")
-    classic_massage_category = (AppiumBy.ACCESSIBILITY_ID, "profile-schedule-button-10000000")
+    japan_manicure = (AppiumBy.ACCESSIBILITY_ID, "sp-profile-services-select-button-1003000")
+    classic_massage_category = (AppiumBy.ACCESSIBILITY_ID, "sp-profile-services-select-button-1003000")
     classic_massage_1h = (AppiumBy.ACCESSIBILITY_ID, "profile-schedule-button-10001002")
 
     def __init__(self, driver):

@@ -1,8 +1,8 @@
 import time
 
-from Pages.BasePage import BasePage
+from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
-from Pages.BookVisitScreen import BookVisitScreen
+from PagesCLI.BookVisitScreen import BookVisitScreen
 from Variables.variables import *
 
 

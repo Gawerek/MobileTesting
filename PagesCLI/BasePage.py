@@ -35,7 +35,7 @@ class BasePage:
             EC.presence_of_element_located(locator_tuple)
         )
         element.send_keys(value)
-        log.logger.info(f"Typed {value} in element with locator: {locator_tuple}")
+        # log.logger.info(f"Typed {value} in element with locator: {locator_tuple}")
 
     def getText(self, locator_tuple):
         element = WebDriverWait(self.driver, WAIT_TIME).until(
@@ -61,3 +61,9 @@ class BasePage:
         # log.logger.info(f"Cleared text from element with locator: {locator_tuple}")
 
 
+    def get_element_id(self, locator_tuple):
+        element = WebDriverWait(self.driver, WAIT_TIME).until(
+            EC.presence_of_element_located(locator_tuple)
+        )
+        element_id = element.get_attribute('id')
+        return element_id

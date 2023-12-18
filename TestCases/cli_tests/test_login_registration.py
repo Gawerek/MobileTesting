@@ -1,8 +1,8 @@
 import pytest
 import time
 
-from Pages.CodeScreen import CodeScreen
-from Pages.HomeScreen import HomeScreen
+from PagesCLI.CodeScreen import CodeScreen
+from PagesCLI.HomeScreen import HomeScreen
 from TestCases.BaseTest import BaseTest
 from Utilities import dataProvider
 from Variables.variables import *

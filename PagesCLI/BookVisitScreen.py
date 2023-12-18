@@ -1,8 +1,8 @@
 import time
 
-from Pages.BasePage import BasePage
+from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
-from Pages.ConfirmationScreen import ConfirmationScreen
+from PagesCLI.ConfirmationScreen import ConfirmationScreen
 
 from Variables.variables import *
 from Utilities.scroll_util import ScrollUtil

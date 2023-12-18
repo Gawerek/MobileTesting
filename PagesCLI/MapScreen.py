@@ -1,15 +1,15 @@
 import time
-from Pages.BasePage import BasePage
+from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
 from Variables.variables import *
-from Pages.SpProfileScreen import SpProfileScreen
+from PagesCLI.SpProfileScreen import SpProfileScreen
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
 class MapScreen(BasePage):
     check_services = (AppiumBy.ACCESSIBILITY_ID, "map-choose-sp-button")
-    sp_name_text = (AppiumBy.XPATH, "//android.widget.TextView[@text='Magic Nails']")
+    sp_name_text = (AppiumBy.ACCESSIBILITY_ID, "map-sp-preview-card-name-text")
 
     def __init__(self, driver):
         super().__init__(driver)

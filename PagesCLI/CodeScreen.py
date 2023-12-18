@@ -1,7 +1,7 @@
-from Pages.BasePage import BasePage
+from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
 from Variables.variables import *
-from Pages.SettingsScreen import SettingsScreen
+from PagesCLI.SettingsScreen import SettingsScreen
 
 class CodeScreen(BasePage):
     prefix_label = (AppiumBy.ID, "text_input")

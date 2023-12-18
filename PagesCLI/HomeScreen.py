@@ -1,9 +1,9 @@
-from Pages.BasePage import BasePage
+from PagesCLI.BasePage import BasePage
 
-from Pages.GeneralLoginScreen import GeneralLoginScreen
-from Pages.SettingsScreen import SettingsScreen
-from Pages.SearchScreen import SearchScreen
-from Pages.VisitsScreen import VisitsScreen
+from PagesCLI.GeneralLoginScreen import GeneralLoginScreen
+from PagesCLI.SettingsScreen import SettingsScreen
+from PagesCLI.SearchScreen import SearchScreen
+from PagesCLI.VisitsScreen import VisitsScreen
 from appium.webdriver.common.appiumby import AppiumBy
 
 

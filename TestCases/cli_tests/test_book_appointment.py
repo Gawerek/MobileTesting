@@ -2,8 +2,8 @@ from Utilities.scroll_util import ScrollUtil
 import pytest
 import time
 
-from Pages.CodeScreen import CodeScreen
-from Pages.HomeScreen import HomeScreen
+from PagesCLI.CodeScreen import CodeScreen
+from PagesCLI.HomeScreen import HomeScreen
 from TestCases.BaseTest import BaseTest
 from Utilities import dataProvider
 from Variables.variables import *
@@ -46,7 +46,7 @@ class Test_BookAppointment(BaseTest):
             # Rest of the booking process
             ScrollUtil.scrollToTextByAndroidUIAutomator("zarezerwuj", self.driver)
             confirmation_screen = book_visit_screen.click_book_button()
-            confirmation_screen.click_go_to_visit_list()
+            confirmation_screen.verify_and_click_go_to_visit_list()
             time.sleep(1)
             home.go_to_search()
 

@@ -1,6 +1,6 @@
-from Pages.BasePage import BasePage
+from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
-from Pages.PhoneNumberScreen import PhoneNumberScreen
+from PagesCLI.PhoneNumberScreen import PhoneNumberScreen
 
 
 class LoginOrRegisterScreen(BasePage):

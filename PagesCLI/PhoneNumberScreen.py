@@ -1,8 +1,8 @@
 import time
 
-from Pages.BasePage import BasePage
+from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
-from Pages.CodeScreen import CodeScreen
+from PagesCLI.CodeScreen import CodeScreen
 from Variables.variables import *
 
 

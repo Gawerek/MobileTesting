@@ -1,6 +1,6 @@
 import time
 
-from Pages.BasePage import BasePage
+from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
 
 from Variables.variables import *
