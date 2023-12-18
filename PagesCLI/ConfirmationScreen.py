@@ -20,9 +20,10 @@ class ConfirmationScreen(BasePage):
         service = self.getText(self.visit_service)
         date = self.getText(self.visit_date)
         address = self.getText(self.visit_address)
-        result = (f"typ ={type},"
-               f"serwis = {service},"
-               f"data = {date},"
+        result = (
+                f"typ ={type},\n"
+               f"serwis = {service},\n"
+               f"data = {date},\n"
                f"adres ={address}")
         print(result)
         self.click(self.visit_list_button)

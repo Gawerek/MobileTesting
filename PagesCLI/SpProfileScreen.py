@@ -3,6 +3,7 @@ import time
 from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
 from PagesCLI.BookVisitScreen import BookVisitScreen
+from Utilities.LocatoryFactory import LocatorFactory
 
 from Variables.variables import *
 
@@ -22,8 +23,7 @@ class SpProfileScreen(BasePage):
 
 
     def book_service(self, service=None):
-        if service == "japan_manicure":
-            self.click(self.japan_manicure)
-        if service == "classic_massage_1h":
-            self.click(self.classic_massage_subcategory)
+        service_locator = LocatorFactory.create_service_locator(service)
+        self.click(service_locator)
+
         return BookVisitScreen(self.driver)

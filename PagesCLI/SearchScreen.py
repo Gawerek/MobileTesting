@@ -30,10 +30,10 @@ class SearchScreen(BasePage):
         search_result_locator = f"//android.widget.TextView[contains(@text,'{text}')]"
 
         search_result_tuple = (AppiumBy.XPATH, search_result_locator)
-        # search_id = self.get_element_id(search_result_tuple)
-        #
-        # search_result_tuple_id = (AppiumBy.ACCESSIBILITY_ID, search_id)
-        self.click(search_result_tuple)
+        search_id = self.get_element_id(search_result_tuple)
+
+        search_result_tuple_id = (AppiumBy.ACCESSIBILITY_ID, search_id)
+        self.click(search_result_tuple_id)
         return MapScreen(self.driver)
 
     def select_service(self):

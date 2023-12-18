@@ -65,5 +65,5 @@ class BasePage:
         element = WebDriverWait(self.driver, WAIT_TIME).until(
             EC.presence_of_element_located(locator_tuple)
         )
-        element_id = element.get_attribute('id')
+        element_id = element.get_attribute('resource-id')
         return element_id
