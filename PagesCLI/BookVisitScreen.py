@@ -8,6 +8,9 @@ from PagesCLI.ConfirmationScreen import ConfirmationScreen
 from Variables.variables import *
 from Utilities.scroll_util import ScrollUtil
 
+
+from Utilities.DataSaver import DataSaver
+
 class BookVisitScreen(BasePage):
     book_button = (AppiumBy.ACCESSIBILITY_ID, "booking-button")
     selected_service = (AppiumBy.ACCESSIBILITY_ID,"booking-choosen-service-text")
@@ -27,10 +30,17 @@ class BookVisitScreen(BasePage):
         duration = self.getText(self.service_duration)
         service = self.getText(self.selected_service)
         price = self.getText(self.service_price)
-        result = (f"czas ={duration},\n"
-               f"serwis = {service},\n"
-               f"cena = {price}\n")
-        print(f"Booking result -{result}")
+
+        data = {
+            'Duration': duration,
+            'Service': service,
+            'Price': price
+        }
+
+        for key, item in data.items():
+            print(item)
+        DataSaver.save_to_excel(data, 'Book Visit Screen Data')
+
 
 
         ScrollUtil.scrollToTextByAndroidUIAutomator("zarezerwuj", self.driver)

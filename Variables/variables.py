@@ -5,7 +5,9 @@ name='John$%123山田Жан'
 registration_number= "999666333"
 registration_code = "333333"
 
-
+statuses = {
+    'WAITING':'oczekuje na potwierdzenie przez profesjonalistę'
+}
 
 
 

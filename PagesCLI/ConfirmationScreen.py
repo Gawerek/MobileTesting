@@ -1,5 +1,5 @@
 import time
-
+from Utilities.DataSaver import DataSaver
 from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
 
@@ -16,14 +16,17 @@ class ConfirmationScreen(BasePage):
 
 
     def verify_and_click_go_to_visit_list(self):
-        type = {self.getText(self.visit_type)}
+        type = self.getText(self.visit_type)
         service = self.getText(self.visit_service)
         date = self.getText(self.visit_date)
         address = self.getText(self.visit_address)
-        result = (
-                f"typ ={type},\n"
-               f"serwis = {service},\n"
-               f"data = {date},\n"
-               f"adres ={address}")
-        print(result)
+        data = {
+            'Type': type,
+            'Service': service,
+            'Date': date,
+            'Address': address
+        }
+        for key, item in data.items():
+            print(item)
+        DataSaver.save_to_excel(data, 'Confirmation Screen Data')
         self.click(self.visit_list_button)

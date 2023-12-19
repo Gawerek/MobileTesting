@@ -45,6 +45,12 @@ class BasePage:
         # log.logger.info(f"Getting text from an element {locator_tuple}")
         return text
 
+    def find_elements(self, locator_tuple):
+        elements = WebDriverWait(self.driver, WAIT_TIME).until(
+            EC.presence_of_all_elements_located(locator_tuple)
+        )
+        return elements
+
     def type(self, locator_tuple, value):
         element = WebDriverWait(self.driver, WAIT_TIME).until(
             EC.presence_of_element_located(locator_tuple)

@@ -1,4 +1,4 @@
-
+import Variables.variables
 from TestCases.BaseTest import  BaseTest
 
 
@@ -6,7 +6,7 @@ from Utilities import dataProvider, app_manager
 from Utilities.scroll_util import ScrollUtil
 import pytest
 
-
+import Variables.variables as var
 
 from PagesCLI.HomeScreen import HomeScreen
 
@@ -77,14 +77,15 @@ class Test_BookAppointmentAndAccept(BaseTest):
         # Rest of the booking process
         confirmation_screen = book_visit_screen.click_book_button()
         confirmation_screen.verify_and_click_go_to_visit_list()
-        time.sleep(1)
-        home.go_to_search()
+
+        visit_screen = home.go_to_visit()
+        visit_screen.verify_status(var.statuses['WAITING'])
 
         manager.launch_sp_app()
         home_SP = HomeScreenSP(self.driver)
         news_SP = home_SP.go_to_news()
         news_SP.click_more(0)
-        news_SP.verify_status("oczekuje na potwierdzenie przez profesjonalistę")
+        news_SP.verify_status(var.statuses['WAITING'])
         news_SP.accept_visit()
         time.sleep(5)
 
