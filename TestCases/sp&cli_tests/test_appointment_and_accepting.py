@@ -26,8 +26,8 @@ class Test_BookAppointmentAndAccept(BaseTest):
 
 
     @pytest.mark.parametrize("service_info, name, service_type, address", [
-        (("direct", "PAZNOKCIE_MANICURE_JAPOŃSKI"), "Automation SP", "mobile", "Marszałkowska, Warszawa"),
-        (("direct", "BRWI_HENNA_BRWI"), "Automation SP", "stationary", None),
+        (("direct", "PAZNOKCIE_MANICURE_JAPOŃSKI"), "Magic Nails", "mobile", "Marszałkowska, Warszawa"),
+        (("direct", "BRWI_HENNA_BRWI"), "Magic Nails", "stationary", None),
 
     ])
     def test_book_appointment_and_accept_by_SP(self, service_info, name, service_type, address):
@@ -86,6 +86,7 @@ class Test_BookAppointmentAndAccept(BaseTest):
         news_SP = home_SP.go_to_news()
         news_SP.click_more(0)
         news_SP.verify_status(var.statuses['WAITING'])
+
         news_SP.accept_visit()
         time.sleep(5)
 

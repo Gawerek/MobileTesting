@@ -9,7 +9,7 @@ statuses = {
     'WAITING':'oczekuje na potwierdzenie przez profesjonalistę'
 }
 
-
+uuid = None
 
 hair_category= "search-service-type-item-accordion-2000000"
 hair_all_services = "search-service-type-item-2000000"

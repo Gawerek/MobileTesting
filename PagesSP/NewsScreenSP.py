@@ -1,5 +1,7 @@
 import time
 import re
+
+import Variables.variables
 from Utilities.DataSaver import DataSaver
 from selenium.common import TimeoutException, NoSuchElementException
 from selenium.webdriver.support.wait import WebDriverWait
@@ -7,6 +9,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from .BasePageSP import BasePageSP
 from appium.webdriver.common.appiumby import AppiumBy
 from Utilities.ExtractId import ExtractId
+from Utilities.LocatoryFactory import LocatorFactory
+from Variables.variables import *
 
 
 from Variables.variables import *
@@ -36,19 +40,32 @@ class NewsScreenSP(BasePageSP):
 
 
 
+    # def verify_status(self, correct_status):
+    #    # Find the first element with content-desc that matches the pattern
+    #     status_element = self.driver.find_element(AppiumBy.XPATH, "//*[contains(@content-desc, 'dashboard-visit-modal-') and contains(@content-desc, '-visit-status')]")
+    #     element_id = status_element.get_attribute('resource-id')
+    #     uuid = ExtractId.extract_id(full_id=element_id)
+    #     status = status_element.text
+    #     data = {
+    #         'Status': status,
+    #         'Element ID': element_id,
+    #         'UUID': uuid
+    #     }
+    #     DataSaver.save_to_excel(data, 'Verify Status SP')
+    #     assert status_element.text == correct_status
+    #     print("Status matches:", correct_status)
+
     def verify_status(self, correct_status):
-       # Find the first element with content-desc that matches the pattern
-        status_element = self.driver.find_element(AppiumBy.XPATH, "//*[contains(@content-desc, 'dashboard-visit-modal-') and contains(@content-desc, '-visit-status')]")
+        print("uuid from variables" + Variables.variables.uuid)
+        dashboard_status_locator = LocatorFactory.create_dashboard_visit_modal_locator_SP(Variables.variables.uuid)
+        status_element = self.find_element(dashboard_status_locator)  # Use the dynamic locator
         element_id = status_element.get_attribute('resource-id')
-        uuid = ExtractId.extract_id(full_id=element_id)
         status = status_element.text
         data = {
             'Status': status,
             'Element ID': element_id,
-            'UUID': uuid
+            'UUID': Variables.variables.uuid
         }
         DataSaver.save_to_excel(data, 'Verify Status SP')
         assert status_element.text == correct_status
         print("Status matches:", correct_status)
-
-
