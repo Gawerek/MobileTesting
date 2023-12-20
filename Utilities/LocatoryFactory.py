@@ -1,5 +1,4 @@
 from appium.webdriver.common.appiumby import AppiumBy
-from Utilities.Globals import uuid  # Import the global uuid variable
 
 class LocatorFactory:
     @staticmethod
@@ -26,3 +25,8 @@ class LocatorFactory:
     @staticmethod
     def create_dashboard_visit_modal_locator_SP(uuid):
         return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-status")
+
+    @staticmethod
+    def create_visit_item_status_locator_CLI(uuid):
+        return (AppiumBy.ACCESSIBILITY_ID, f"visit-item-status-{uuid}")
+

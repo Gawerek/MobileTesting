@@ -73,3 +73,9 @@ class BasePage:
         )
         element_id = element.get_attribute('resource-id')
         return element_id
+
+    def find_element(self, locator_tuple):
+        element = WebDriverWait(self.driver, WAIT_TIME).until(
+            EC.presence_of_element_located(locator_tuple)
+        )
+        return element

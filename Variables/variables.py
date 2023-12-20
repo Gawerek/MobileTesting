@@ -5,15 +5,19 @@ name='John$%123山田Жан'
 registration_number= "999666333"
 registration_code = "333333"
 
+
+
 statuses = {
-    'WAITING':'oczekuje na potwierdzenie przez profesjonalistę'
+    'WAITING':'oczekuje na potwierdzenie przez profesjonalistę',
+    'ACCEPTED':'potwierdzona - booking przez aplikacje',
+    'REJECTEDSP': 'odrzucona przez profesjonalistę'
 }
+
+
+
 
 uuid = None
 
-hair_category= "search-service-type-item-accordion-2000000"
-hair_all_services = "search-service-type-item-2000000"
-hair_cut_female = "search-service-type-item-2001000"
 
 
-# profile-schedule-button-1003000
+
