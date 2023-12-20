@@ -77,10 +77,10 @@ def appium_driver_SP(request):
     desired_caps = {}
     desired_caps['platformName'] = 'Android'
     desired_caps['deviceName'] = 'Android'
-    desired_caps['appPackage'] = 'bbox.sp.pl.app'
+    # desired_caps['appPackage'] = 'bbox.sp.pl.app'
     # Testing env
-    # desired_caps['appPackage'] = 'bbox.sp.pl.app.development'
-    desired_caps['appActivity'] = 'bbox.sp.pl.app.MainActivity'
+    desired_caps['appPackage'] = 'bbox.pl.sp.app.development'
+    desired_caps['appActivity'] = 'bbox.sp.pl.app.MainActivity' 
     desired_caps['noReset'] = True
     driver = webdriver.Remote('http://localhost:4725/wd/hub', desired_caps)
     request.cls.driver = driver

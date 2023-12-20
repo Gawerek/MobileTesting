@@ -17,7 +17,7 @@ class DataSaver:
             os.makedirs(directory)
 
         # Define the headers
-        headers = ["Timestamp", "Step Name", "Duration", "Service", "Price", "Type", "Date", "Address", "Element ID", "UUID","Status"]
+        headers = ["Timestamp", "Step Name", "Duration", "Service", "Price", "Type", "Date", "Address", "Element ID", "UUID", "Status", "Phone","ClientName", "OriginalTime"]
 
         # Create a new workbook if the file does not exist
         if not os.path.exists(file_path):

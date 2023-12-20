@@ -10,7 +10,8 @@ registration_code = "333333"
 statuses = {
     'WAITING':'oczekuje na potwierdzenie przez profesjonalistę',
     'ACCEPTED':'potwierdzona - booking przez aplikacje',
-    'REJECTEDSP': 'odrzucona przez profesjonalistę'
+    'REJECTEDSP': 'odrzucona przez profesjonalistę',
+    'CANCELEDSP': 'odwołana przez profesjonalistę'
 }
 
 

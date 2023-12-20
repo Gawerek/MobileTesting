@@ -10,9 +10,9 @@ from appium.webdriver.common.appiumby import AppiumBy
 
 class HomeScreenSP(BasePageSP):
     news_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'ROUTE_DASHBOARD')
-    calendar_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'ROUTE_VISIT_CALENDAR')
+    calendar_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'CALENDAR_NAVIGATOR')
     chat_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'ROUTE_CHANNEL_LIST')
-    clients_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'CLIENTS_NAVIGATOR')
+    clients_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'ROUTE_DATABASE_OF_CLIENTS')
     profile_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'PROFILE_NAVIGATOR')
 
     def __init__(self, driver):
