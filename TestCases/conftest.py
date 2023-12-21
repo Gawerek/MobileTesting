@@ -12,13 +12,15 @@ from Utilities.app_manager import AppManager
 
 # Function to generate random contact
 def generate_random_contact():
-    faker = Faker()
+    # Initialize a Faker generator with a specific locale
+    faker = Faker('pl_PL')  # Polish locale
     name = faker.name()
     phone_number = ''.join([str(random.randint(0, 9)) for _ in range(9)])
-    return name, phone_number
+    address = faker.address().replace('pl. ', '')  # Remove 'pl.' prefix
+    return name, phone_number, address
 
 # Fixture to provide random contact data
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def random_contact():
     return generate_random_contact()
 

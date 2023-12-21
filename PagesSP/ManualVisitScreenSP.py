@@ -7,8 +7,8 @@ from Variables.variables import *
 
 
 class ManualVisitScreenSP(BasePageSP):
-    nails_category_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='Paznokcie']")
-    hybrid_manicure_category_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='manicure hybrydowy']")
+    nails_category_button = (AppiumBy.ACCESSIBILITY_ID, "book-manual-visit-screen-accordion-header-1000000-title")
+    hybrid_manicure_category_button = (AppiumBy.ACCESSIBILITY_ID, "book-manual-visit-screen-outline-button-1003000-text")
     barber_category_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='Barber']")
     save_button = (AppiumBy.XPATH, "//android.widget.TextView[contains(@text, 'zapisz')]")
     mobile_type_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='z dojazdem do klienta']")
@@ -16,6 +16,7 @@ class ManualVisitScreenSP(BasePageSP):
     phone_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Podaj numer telefonu']")
     address_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Adres klienta']")
     drive_price_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Cena za dojazd']")
+    confirm_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='przejdź do listy wizyt']")
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -38,8 +39,10 @@ class ManualVisitScreenSP(BasePageSP):
         ScrollUtil.scrollToTextByAndroidUIAutomator("z dojazdem do klienta", self.driver)
         self.click(self.mobile_type_button)
         self.type(self.address_input, address)
+        ScrollUtil.scrollToTextByAndroidUIAutomator("Cena za dojazd", self.driver)
         self.type(self.drive_price_input, price)
 
     def save_visit(self):
         ScrollUtil.scrollToTextByAndroidUIAutomator("zapisz", self.driver)
         self.click(self.save_button)
+        self.click(self.confirm_button)
