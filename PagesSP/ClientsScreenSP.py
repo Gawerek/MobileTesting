@@ -4,8 +4,7 @@ from .BasePageSP import BasePageSP
 from .VisitsScreenSP import VisitsScreenSP
 from .AddClientScreenSP import AddClientScreenSP
 from appium.webdriver.common.appiumby import AppiumBy
-from .ManualVisitScreenSP import ManualVisitScreenSP
-from Variables.variables import *
+from .ClientDetailsScreenSP import ClientDetailsScreen
 
 
 class ClientsScreen(BasePageSP):
@@ -27,3 +26,9 @@ class ClientsScreen(BasePageSP):
     def click_import_contacts(self):
         self.click(self.add_client_button)
         self.click(self.import_contacts_button)
+
+
+    def click_client_item(self, client_name):
+        client_locator = (AppiumBy.XPATH, f"//android.widget.TextView[@text='{client_name}']")
+        self.click(client_locator)
+        return ClientDetailsScreen(self.driver)

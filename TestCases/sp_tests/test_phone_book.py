@@ -14,8 +14,11 @@ class Test_PhoneBook(BaseTestSP):
         home_screen = HomeScreenSP(self.driver)
         client_screen = home_screen.go_to_clients()
         add_client_screen = client_screen.click_add_contacts_manually()
-        add_client_screen.add_new_client(name=cli_name,address=cli_address,phone=cli_phone_number)
-        time.sleep(5)
+        add_client_screen.add_new_client(name=cli_name,address=cli_address, phone=cli_phone_number)
+        client_details_screen = client_screen.click_client_item(client_name=cli_name)
+        client_details_screen.verify_profile_details(client_name=cli_name, client_phone=cli_phone_number, client_address=cli_address)
+
+
 
 
 
