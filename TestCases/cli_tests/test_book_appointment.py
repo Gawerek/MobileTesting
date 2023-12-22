@@ -6,6 +6,7 @@ from PagesCLI.CodeScreen import CodeScreen
 from PagesCLI.HomeScreen import HomeScreen
 from TestCases.BaseTest import BaseTest
 from Utilities import dataProvider
+from Utilities.services import ServiceItems
 from Variables.variables import *
 
 
@@ -29,8 +30,16 @@ class Test_BookAppointment(BaseTest):
             sp_profile_screen = map_screen.click_on_check_services()
 
             # Handling different types of service booking
-            if service_info == "direct":
-                book_visit_screen = sp_profile_screen.book_service(service_name)
+            if service_info[0] == "direct":
+                # Use getattr to dynamically access the service item
+                service_name = service_info[1].upper()  # Convert to uppercase to match the class attribute naming convention
+                service_item = getattr(ServiceItems, service_name, None)
+                print(service_item)
+                if service_item is not None:
+                    book_visit_screen = sp_profile_screen.book_service(service_item)
+                else:
+                    raise ValueError(f"Service item {service_name} not found in ServiceItems")
+
             # elif service_info == "category_subcategory":
             #     subcategory = service_info[2]
             #     ScrollUtil.swipeDown(2, self.drvier)
