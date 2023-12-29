@@ -18,6 +18,7 @@ class Test_AddManualVisit(BaseTestSP):
         manual_visit_screen.enter_phone_number(cli_phone_number)
         manual_visit_screen.select_service()
         manual_visit_screen.configure_mobile_visits(cli_address, 50)
+        # manual_visit_screen.pick_date(1)
         manual_visit_screen.save_visit()
         time.sleep(5)
     def test_add_manual_visit_calendar(self, random_contact):
@@ -28,6 +29,7 @@ class Test_AddManualVisit(BaseTestSP):
         manual_visit_screen.enter_client_name(cli_name)
         manual_visit_screen.enter_phone_number(cli_phone_number)
         manual_visit_screen.select_service()
+        # manual_visit_screen.pick_date(1)
         manual_visit_screen.save_visit()
 
 
@@ -43,6 +45,7 @@ class Test_AddManualVisit(BaseTestSP):
         manual_visit_screen.enter_phone_number(cli_phone_number)
         manual_visit_screen.select_service()
         manual_visit_screen.configure_mobile_visits(cli_address, 50)
+        # manual_visit_screen.pick_date(1)
         manual_visit_screen.save_visit()
         time.sleep(2)
 
@@ -54,5 +57,6 @@ class Test_AddManualVisit(BaseTestSP):
         manual_visit_screen.enter_client_name(cli_name)
         manual_visit_screen.enter_phone_number(cli_phone_number)
         manual_visit_screen.select_service()
+        # manual_visit_screen.pick_date(1)
         manual_visit_screen.save_visit()
         time.sleep(5)

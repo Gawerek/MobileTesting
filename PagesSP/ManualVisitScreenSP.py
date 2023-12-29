@@ -2,6 +2,8 @@ import time
 from Utilities.scroll_util import *
 from .BasePageSP import BasePageSP
 from appium.webdriver.common.appiumby import AppiumBy
+from datetime import datetime, timedelta
+
 
 from Variables.variables import *
 
@@ -17,6 +19,7 @@ class ManualVisitScreenSP(BasePageSP):
     address_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Adres klienta']")
     drive_price_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Cena za dojazd']")
     confirm_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='przejdź do listy wizyt']")
+    date_locator = (AppiumBy.ACCESSIBILITY_ID, "book-manual-visit-screen-calendar-content-day-2023-12-29-text")
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -41,6 +44,24 @@ class ManualVisitScreenSP(BasePageSP):
         self.type(self.address_input, address)
         ScrollUtil.scrollToTextByAndroidUIAutomator("Cena za dojazd", self.driver)
         self.type(self.drive_price_input, price)
+
+
+    def pick_date(self, days_in_future):
+        # Get the current date
+        current_date = datetime.now()
+
+        # Add specified number of days to the current date
+        future_date = current_date + timedelta(days=days_in_future)
+
+        # Format the date to match the locator format (e.g., "2023-12-29")
+        formatted_date = future_date.strftime("%Y-%m-%d")
+
+        # Construct the locator with the formatted date
+        date_locator = (AppiumBy.ACCESSIBILITY_ID, f"book-manual-visit-screen-calendar-content-day-{formatted_date}-text")
+
+        # Scroll to and select the date
+        ScrollUtil.scrollToAccessibilityIdByAndroidUIAutomator(date_locator[1], self.driver)
+        self.click(date_locator)
 
     def save_visit(self):
         ScrollUtil.scrollToTextByAndroidUIAutomator("zapisz", self.driver)

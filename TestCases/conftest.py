@@ -25,6 +25,18 @@ def random_contact():
     return generate_random_contact()
 
 
+def generate_random_sp():
+    faker = Faker('pl_PL')  # Polish locale
+    name = faker.name()
+    description = faker.sentence()
+    return name, description
+
+@pytest.fixture(scope="function")
+def random_sp():
+    return generate_random_sp()
+
+
+
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
@@ -41,8 +53,6 @@ def appium_driver(request):
     desired_caps = {}
     desired_caps['platformName'] = 'Android'
     desired_caps['deviceName'] = 'Android'
-    # desired_caps['appPackage'] = configReader.readConfiguration("configuration", "app_package")
-    # desired_caps['appActivity'] = configReader.readConfiguration("configuration", "app_activity")
     desired_caps['appPackage'] = 'com.leaware.beautybox'
     desired_caps['appActivity'] = 'com.leaware.beautybox.MainActivity'
     # desired_caps['appPackage'] = 'bbox.sp.pl.app'

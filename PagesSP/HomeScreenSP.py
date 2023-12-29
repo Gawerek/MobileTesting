@@ -2,7 +2,7 @@
 
 from .BasePageSP import BasePageSP
 from .ClientsScreenSP import ClientsScreen
-
+from .ProfileScreenSP import ProfileScreenSP
 from .NewsScreenSP import NewsScreenSP
 from .CalendarScreenSP import CalendarScreenSP
 from appium.webdriver.common.appiumby import AppiumBy
@@ -37,8 +37,8 @@ class HomeScreenSP(BasePageSP):
 
     def go_to_profile(self):
         self.click(self.profile_tab_locator)
-        return (self.driver)
+        return ProfileScreenSP(self.driver)
 
     def go_to_settings_login(self):
         self.click(self.settings_tab_locator)
-        return GeneralLoginScreen(self.driver)
+        # return GeneralLoginScreen(self.driver)
