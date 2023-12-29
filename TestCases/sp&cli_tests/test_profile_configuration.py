@@ -10,7 +10,7 @@ from Utilities import dataProvider, app_manager
 
 
 class Test_ProfileConfiguration(BaseTestSP):
-    def test_change_name(self, random_sp):
+    def test_change_name_and_description(self, random_sp):
         sp_name, sp_description = random_sp
         manager = app_manager.AppManager(self.driver)
         home_screen_SP = HomeScreenSP(self.driver)
@@ -28,6 +28,10 @@ class Test_ProfileConfiguration(BaseTestSP):
         search_CLI.clear_search_bar()
         map_screen = search_CLI.search_professionalist_or_service(sp_name)
         map_screen.assert_name(sp_name)
+        sp_profile_screen = map_screen.click_on_check_services()
+        sp_profile_screen.verify_sp_name(sp_name)
+        sp_profile_info_tab_screen = sp_profile_screen.click_sp_profile_tab_info()
+        sp_profile_info_tab_screen.verify_description(sp_description)
         manager.launch_sp_app()
         profile_screen_SP = home_screen_SP.go_to_profile()
         profile_data_screen_SP = profile_screen_SP.click_profile_button()
