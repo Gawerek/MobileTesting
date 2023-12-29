@@ -20,6 +20,8 @@ class Test_ProfileConfiguration(BaseTestSP):
         profile_info_screen.change_profile_name(sp_name)
         profile_info_screen.change_description(sp_description)
         profile_data_screen_SP.click_profile_submit()
+        profile_info_screen.verify_profile_name(sp_name)
+        profile_info_screen.verify_description(sp_description)
         manager.launch_cli_app()
         home_CLI = HomeScreen(self.driver)
         search_CLI = home_CLI.go_to_search()
@@ -32,5 +34,6 @@ class Test_ProfileConfiguration(BaseTestSP):
         profile_info_screen = profile_data_screen_SP.click_profile_info_tab()
         profile_info_screen.change_profile_name("Automation SP")
         profile_data_screen_SP.click_profile_submit()
+        profile_info_screen.verify_profile_name("Automation SP")
         time.sleep(2)
 
