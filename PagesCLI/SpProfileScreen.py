@@ -42,6 +42,7 @@ class SpProfileScreen(BasePage):
 
     def book_service(self, service=None):
         service_locator = LocatorFactory.create_service_locator(service)
+
         self.click(service_locator)
 
         return BookVisitScreen(self.driver)

@@ -3,15 +3,20 @@ from appium.webdriver.common.appiumby import AppiumBy
 class ScrollUtil:
 
     @staticmethod
-    def scrollToAccessibilityIdByAndroidUIAutomator(accessibility_id, driver):
-        ui_automator_string = f"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().description(\"{accessibility_id}\").instance(0))"
+    def scrollToAccessibilityIdByAndroidUIAutomator(accessibility_id, driver, horizontal=False):
+        scrollable_selector = "new UiScrollable(new UiSelector().scrollable(true).instance(0))"
+        if horizontal:
+            scrollable_selector += ".setAsHorizontalList()"
+        ui_automator_string = f"{scrollable_selector}.scrollIntoView(new UiSelector().description(\"{accessibility_id}\").instance(0))"
         driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, ui_automator_string)
 
-
     @staticmethod
-    def scrollToTextByAndroidUIAutomator(text, driver):
-        ui_automator_string = f"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"{text}\").instance(0))"
-        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, ui_automator_string)#.click()
+    def scrollToTextByAndroidUIAutomator(text, driver, horizontal=False):
+        scrollable_selector = "new UiScrollable(new UiSelector().scrollable(true).instance(0))"
+        if horizontal:
+            scrollable_selector += ".setAsHorizontalList()"
+        ui_automator_string = f"{scrollable_selector}.scrollIntoView(new UiSelector().textContains(\"{text}\").instance(0))"
+        driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, ui_automator_string)
 
 
     @staticmethod
