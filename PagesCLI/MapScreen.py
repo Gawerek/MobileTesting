@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class MapScreen(BasePage):
     check_services = (AppiumBy.ACCESSIBILITY_ID, "map-choose-sp-button")
     sp_name_text = (AppiumBy.ACCESSIBILITY_ID, "map-sp-preview-card-name-text")
+    back_button = (AppiumBy.ACCESSIBILITY_ID, "map-back-button")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -24,4 +25,7 @@ class MapScreen(BasePage):
     def click_on_check_services(self):
         self.click(self.check_services)
         return SpProfileScreen(self.driver)
+
+    def click_back_button(self):
+        self.click(self.back_button)
 

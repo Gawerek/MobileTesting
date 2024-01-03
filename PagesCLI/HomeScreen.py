@@ -4,6 +4,7 @@ from PagesCLI.GeneralLoginScreen import GeneralLoginScreen
 from PagesCLI.SettingsScreen import SettingsScreen
 from PagesCLI.SearchScreen import SearchScreen
 from PagesCLI.VisitsScreen import VisitsScreen
+from .FavoriteScreenCLI import FavouriteScreen
 from appium.webdriver.common.appiumby import AppiumBy
 
 
@@ -31,7 +32,7 @@ class HomeScreen(BasePage):
 
     def go_to_favourites(self):
         self.click(self.favourites_tab_locator)
-        # return VillasScreen(self.driver)
+        return FavouriteScreen(self.driver)
 
     def go_to_settings(self):
         self.click(self.settings_tab_locator)

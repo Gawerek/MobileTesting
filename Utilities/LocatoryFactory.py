@@ -58,3 +58,23 @@ class LocatorFactory:
     def create_visit_item_status_locator_CLI(uuid):
         return (AppiumBy.ACCESSIBILITY_ID, f"visit-item-status-{uuid}")
 
+    @staticmethod
+    def create_favourite_toggle_favourite_button(uuid):
+        return (AppiumBy.ACCESSIBILITY_ID, f"favourite-toggle-favourite-button-{uuid}")
+
+    @staticmethod
+    def create_favourite_schedule_button(uuid):
+        return (AppiumBy.ACCESSIBILITY_ID, f"favourite-schedule-button-{uuid}")
+
+
+    @staticmethod
+    def create_favourite_share_button(uuid):
+        return (AppiumBy.ACCESSIBILITY_ID, f"favourite-share-button-{uuid}")
+
+    @staticmethod
+    def create_favourite_message_button(uuid):
+        return (AppiumBy.ACCESSIBILITY_ID,f"favourite-message-button-{uuid}")
+
+    @staticmethod
+    def create_favourite_address_button(uuid):
+        return (AppiumBy.ACCESSIBILITY_ID,f"favourite-address-{uuid}")

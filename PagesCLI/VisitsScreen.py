@@ -17,11 +17,15 @@ class VisitsScreen(BasePage):
     phone_number_label = (AppiumBy.XPATH, "//android.widget.TextView[contains(@text,'Numer telefonu:')]")
     name_label = (AppiumBy.ACCESSIBILITY_ID, "settings-name-text")
     visit_status = (AppiumBy.XPATH, "(//android.widget.TextView[contains(@content-desc, 'visit-item-status')])[1]")
+    favourite_button = (AppiumBy.ACCESSIBILITY_ID, "visit-item-toggle-favourite-button-92dc2ffb-c944-45b3-a2ef-1a634436c69a")
+
 
     def __init__(self, driver):
         super().__init__(driver)
 
-
+    def click_favourite_button(self):
+        ScrollUtil.scrollToAccessibilityIdByAndroidUIAutomator("visit-item-toggle-favourite-button-92dc2ffb-c944-45b3-a2ef-1a634436c69a", self.driver)
+        self.click(self.favourite_button)
 
     def click_another_time(self):
         self.click(self.another_time_button)
