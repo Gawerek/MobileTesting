@@ -1,5 +1,7 @@
 import time
 
+from selenium.common import NoSuchElementException
+
 from Utilities.scroll_util import *
 from PagesCLI.BasePage import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
@@ -9,6 +11,9 @@ from .SpProfileInfoTabScreen import SpProfileInfoTabScreen
 
 from Variables.variables import *
 
+from selenium.common.exceptions import NoSuchElementException
+from datetime import datetime
+import os
 class SpProfileScreen(BasePage):
     japan_manicure = (AppiumBy.ACCESSIBILITY_ID, "sp-profile-services-select-button-1003000")
     classic_massage_category = (AppiumBy.ACCESSIBILITY_ID, "sp-profile-services-select-button-1003000")
@@ -22,7 +27,7 @@ class SpProfileScreen(BasePage):
     sp_profile_tab_reviews = (AppiumBy.ACCESSIBILITY_ID, "sp-profile-tab-reviews")
     sp_profile_name = (AppiumBy.ACCESSIBILITY_ID, "sp-profile-name")
     back_button = (AppiumBy.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ImageView")
-
+    sp_profile_services_confirm_button = (AppiumBy.ACCESSIBILITY_ID,"sp-profile-services-confirm-button")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -43,11 +48,22 @@ class SpProfileScreen(BasePage):
         profile_name_element = self.find_element(self.sp_profile_name)
         assert name == profile_name_element.text
 
+    def book_multiple_services(self, services):
+        # Check if services is a single service ID, convert it to a list
+        if isinstance(services, str):
+            services = [services]
 
-    def book_service(self, service=None):
-        service_locator = LocatorFactory.create_service_locator(service)
+        # Loop over the list of services and click on each one's locator.
+        for service_id in services:
+            service_locator = LocatorFactory.create_service_locator(service_id)
+            print(service_locator)
+            self.click(service_locator)
+            # Optionally, add a check to verify the service has been selected
+            # before proceeding to the next service.
 
-        self.click(service_locator)
+        # Once all services are selected, proceed to the booking confirmation screen.
+        ScrollUtil.scrollToAccessibilityIdByAndroidUIAutomator("sp-profile-services-confirm-button", self.driver)
+        self.click(self.sp_profile_services_confirm_button)
 
         return BookVisitScreen(self.driver)
 

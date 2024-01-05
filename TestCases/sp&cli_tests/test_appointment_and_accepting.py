@@ -47,7 +47,7 @@ class Test_BookAppointmentAndActions(BaseTest):
             service_item = getattr(ServiceItems, service_name, None)
             print(service_item)
             if service_item is not None:
-                book_visit_screen = sp_profile_screen.book_service(service_item)
+                book_visit_screen = sp_profile_screen.book_multiple_services(service_item)
             else:
                 raise ValueError(f"Service item {service_name} not found in ServiceItems")
 
@@ -62,7 +62,7 @@ class Test_BookAppointmentAndActions(BaseTest):
         # Handling mobile service type with address
         if service_type == "mobile":
             assert address is not None, "Address must be provided for mobile service"
-            ScrollUtil.scrollToTextByAndroidUIAutomator("usługi mobilne", self.driver)
+            ScrollUtil.scrollToTextByAndroidUIAutomator("z dojazdem do klienta", self.driver)
             book_visit_screen.configure_mobile_visits(address)
 
         # if book_visit_screen.select_specific_time_slot("14:30"):
@@ -103,7 +103,7 @@ class Test_BookAppointmentAndActions(BaseTest):
             service_item = getattr(ServiceItems, service_name, None)
             print(service_item)
             if service_item is not None:
-                book_visit_screen = sp_profile_screen.book_service(service_item)
+                book_visit_screen = sp_profile_screen.book_multiple_services(service_item)
             else:
                 raise ValueError(f"Service item {service_name} not found in ServiceItems")
 

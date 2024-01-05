@@ -36,7 +36,7 @@ class Test_BookAppointment(BaseTest):
                 service_item = getattr(ServiceItems, service_name, None)
                 print(service_item)
                 if service_item is not None:
-                    book_visit_screen = sp_profile_screen.book_service(service_item)
+                    book_visit_screen = sp_profile_screen.book_multiple_services(service_item)
                 else:
                     raise ValueError(f"Service item {service_name} not found in ServiceItems")
 
@@ -53,7 +53,6 @@ class Test_BookAppointment(BaseTest):
                 book_visit_screen.configure_mobile_visits(address)
 
             # Rest of the booking process
-            ScrollUtil.scrollToTextByAndroidUIAutomator("zarezerwuj", self.driver)
             confirmation_screen = book_visit_screen.click_book_button()
             confirmation_screen.verify_and_click_go_to_visit_list()
             time.sleep(1)

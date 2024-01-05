@@ -12,13 +12,13 @@ from Utilities.scroll_util import ScrollUtil
 from Utilities.DataSaver import DataSaver
 
 class BookVisitScreen(BasePage):
-    book_button = (AppiumBy.ACCESSIBILITY_ID, "booking-button")
-    selected_service = (AppiumBy.ACCESSIBILITY_ID,"booking-choosen-service-text")
-    service_price = (AppiumBy.ACCESSIBILITY_ID,"booking-price-of-service-text")
-    service_duration = (AppiumBy.ACCESSIBILITY_ID, "booking-time-of-service-text" )
+    book_button = (AppiumBy.ACCESSIBILITY_ID, "booking-button-text")
+    selected_service = (AppiumBy.ACCESSIBILITY_ID,"booking-choosen-service-text-")
+    total_cost = (AppiumBy.ACCESSIBILITY_ID, "booking-total-cost")
+    total_duration = (AppiumBy.ACCESSIBILITY_ID, "booking-total-duration")
     time_slot_locator = (AppiumBy.ACCESSIBILITY_ID, "booking-time-slot-button-")
     show_more_button = (AppiumBy.ACCESSIBILITY_ID, "booking-calendar-toggle-expand-button")
-    mobile_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='usługi mobilne']")
+    mobile_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='z dojazdem do klienta']")
     change_time_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='zmień termin']")
     address_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='adres']")
     def __init__(self, driver):
@@ -27,13 +27,13 @@ class BookVisitScreen(BasePage):
 
 
     def click_book_button(self):
-        duration = self.getText(self.service_duration)
-        service = self.getText(self.selected_service)
-        price = self.getText(self.service_price)
+        duration = self.getText(self.total_duration)
+        # service = self.getText(self.selected_service) - add logic to create locator in LocatoryFactory
+        price = self.getText(self.total_cost)
 
         data = {
             'Duration': duration,
-            'Service': service,
+            # 'Service': service,
             'Price': price
         }
 
@@ -43,7 +43,7 @@ class BookVisitScreen(BasePage):
 
 
 
-        ScrollUtil.scrollToTextByAndroidUIAutomator("zarezerwuj", self.driver)
+        ScrollUtil.scrollToAccessibilityIdByAndroidUIAutomator("booking-button-text", self.driver)
         self.click(self.book_button)
         return ConfirmationScreen(self.driver)
 
