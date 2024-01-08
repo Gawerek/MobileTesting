@@ -53,6 +53,7 @@ class BookVisitScreen(BasePage):
         return ConfirmationScreen(self.driver)
 
     def configure_mobile_visits(self, address):
+        ScrollUtil.scrollToTextByAndroidUIAutomator("z dojazdem do klienta", self.driver)
         self.click(self.mobile_button)
         self.type(self.address_input, address)
 

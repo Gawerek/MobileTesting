@@ -62,6 +62,8 @@ class SpProfileScreen(BasePage):
             # before proceeding to the next service.
 
         # Once all services are selected, proceed to the booking confirmation screen.
+
+    def click_submit_button(self):
         ScrollUtil.scrollToAccessibilityIdByAndroidUIAutomator("sp-profile-services-confirm-button", self.driver)
         self.click(self.sp_profile_services_confirm_button)
 

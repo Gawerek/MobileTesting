@@ -78,3 +78,15 @@ class LocatorFactory:
     @staticmethod
     def create_favourite_address_button(uuid):
         return (AppiumBy.ACCESSIBILITY_ID,f"favourite-address-{uuid}")
+
+    @staticmethod
+    def create_booking_time_of_service_locator(service_id):
+        return (AppiumBy.ACCESSIBILITY_ID, f"booking-time-of-service-text-{service_id}")
+
+    @staticmethod
+    def create_booking_price_of_service_locator(service_id):
+        return (AppiumBy.ACCESSIBILITY_ID, f"booking-price-of-service-text-{service_id}")
+
+    @staticmethod
+    def create_booking_chosen_service_locator(service_id):
+        return (AppiumBy.ACCESSIBILITY_ID, f"booking-choosen-service-text-{service_id}")

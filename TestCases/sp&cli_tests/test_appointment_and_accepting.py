@@ -20,16 +20,18 @@ from PagesSP.HomeScreenSP import HomeScreenSP
 from Utilities import dataProvider
 
 
-@pytest.mark.parametrize("service_info, name, service_type, address", [
-    (("direct", "PAZNOKCIE_MANICURE_JAPOŃSKI"), "Automation SP", "mobile", "Marszałkowska, Warszawa"),
-    (("direct", "BRWI_HENNA_BRWI"), "Automation SP", "stationary", None),
-
-])
+# @pytest.mark.parametrize("service_info, name, service_type, address", [
+#     (("direct", "PAZNOKCIE_MANICURE_JAPOŃSKI"), "Automation SP", "mobile", "Marszałkowska, Warszawa"),
+#     (("direct", "BRWI_HENNA_BRWI"), "Automation SP", "stationary", None),
+#
+# ])
+@pytest.mark.parametrize("service_info, name, service_type, address, service_names",
+                         dataProvider.get_data("BookingTest"))
 class Test_BookAppointmentAndActions(BaseTest):
     def setup_method(self, method):
         var.uuid = None
 
-    def test_book_appointment_without_action(self, service_info, name, service_type, address):
+    def test_book_appointment_without_action(self, service_info, name, service_type, address, service_names):
         manager = app_manager.AppManager(self.driver)
         manager.launch_cli_app()
 
@@ -41,38 +43,23 @@ class Test_BookAppointmentAndActions(BaseTest):
         map_screen.assert_name(name)
         sp_profile_screen = map_screen.click_on_check_services()
 
-        if service_info[0] == "direct":
-            # Use getattr to dynamically access the service item
-            service_name = service_info[1].upper()  # Convert to uppercase to match the class attribute naming convention
-            service_item = getattr(ServiceItems, service_name, None)
-            print(service_item)
-            if service_item is not None:
-                book_visit_screen = sp_profile_screen.book_multiple_services(service_item)
-            else:
-                raise ValueError(f"Service item {service_name} not found in ServiceItems")
+        if service_info == "direct":
+            # No need to split the service_names here; it should already be a list
+            for service_name in service_names:
+                service_name_upper = service_name.upper()
+                service_item = getattr(ServiceItems, service_name_upper, None)
+                if service_item is not None:
+                    sp_profile_screen.book_multiple_services([service_item])
+                else:
+                    raise ValueError(f"Service item {service_name_upper} not found in ServiceItems")
+        book_visit_screen = sp_profile_screen.click_submit_button()
 
-
-        elif service_info[0] == "category_subcategory":
-            category = service_info[1]
-            subcategory = service_info[2]
-            ScrollUtil.swipeDown(2, self.driver)
-            sp_profile_screen.select_service_category(category)
-            book_visit_screen = sp_profile_screen.book_service(subcategory)
-
-        # Handling mobile service type with address
+        # Handling mobile service type with address...
         if service_type == "mobile":
             assert address is not None, "Address must be provided for mobile service"
-            ScrollUtil.scrollToTextByAndroidUIAutomator("z dojazdem do klienta", self.driver)
             book_visit_screen.configure_mobile_visits(address)
 
-        # if book_visit_screen.select_specific_time_slot("14:30"):
-        #     ScrollUtil.scrollToTextByAndroidUIAutomator("14:30", self.driver)
-        #     print("Selected time slot: 13:30")
-        # else:
-        #     print("Time slot 13:30 is not available or not found.")
-        #     book_visit_screen.select_first_available_time_slot()
-
-        # Rest of the booking process
+        # Rest of the booking process...
         confirmation_screen = book_visit_screen.click_book_button()
         confirmation_screen.verify_and_click_go_to_visit_list()
 
@@ -85,11 +72,11 @@ class Test_BookAppointmentAndActions(BaseTest):
         news_SP.click_more(0)
         news_SP.verify_status_and_parameters(var.statuses['WAITING'])
 
-    def test_book_appointment_and_accept_by_SP(self, service_info, name, service_type, address):
+    def test_book_appointment_and_accept_by_SP(self, service_info, name, service_type, address, service_names):
         manager = app_manager.AppManager(self.driver)
+        manager.launch_cli_app()
 
         home = HomeScreen(self.driver)
-        manager.launch_cli_app()
         search = home.go_to_search()
 
         search.clear_search_bar()
@@ -97,36 +84,21 @@ class Test_BookAppointmentAndActions(BaseTest):
         map_screen.assert_name(name)
         sp_profile_screen = map_screen.click_on_check_services()
 
-        if service_info[0] == "direct":
-            # Use getattr to dynamically access the service item
-            service_name = service_info[1].upper()  # Convert to uppercase to match the class attribute naming convention
-            service_item = getattr(ServiceItems, service_name, None)
-            print(service_item)
-            if service_item is not None:
-                book_visit_screen = sp_profile_screen.book_multiple_services(service_item)
-            else:
-                raise ValueError(f"Service item {service_name} not found in ServiceItems")
+        if service_info == "direct":
+            # No need to split the service_names here; it should already be a list
+            for service_name in service_names:
+                service_name_upper = service_name.upper()
+                service_item = getattr(ServiceItems, service_name_upper, None)
+                if service_item is not None:
+                    sp_profile_screen.book_multiple_services([service_item])
+                else:
+                    raise ValueError(f"Service item {service_name_upper} not found in ServiceItems")
+        book_visit_screen = sp_profile_screen.click_submit_button()
 
-
-        elif service_info[0] == "category_subcategory":
-            category = service_info[1]
-            subcategory = service_info[2]
-            ScrollUtil.swipeDown(2, self.driver)
-            sp_profile_screen.select_service_category(category)
-            book_visit_screen = sp_profile_screen.book_service(subcategory)
-
-        # Handling mobile service type with address
+        # Handling mobile service type with address...
         if service_type == "mobile":
             assert address is not None, "Address must be provided for mobile service"
-            ScrollUtil.scrollToTextByAndroidUIAutomator("usługi mobilne", self.driver)
             book_visit_screen.configure_mobile_visits(address)
-
-        # if book_visit_screen.select_specific_time_slot("14:30"):
-        #     ScrollUtil.scrollToTextByAndroidUIAutomator("14:30", self.driver)
-        #     print("Selected time slot: 13:30")
-        # else:
-        #     print("Time slot 13:30 is not available or not found.")
-        #     book_visit_screen.select_first_available_time_slot()
 
         # Rest of the booking process
         confirmation_screen = book_visit_screen.click_book_button()
@@ -152,11 +124,11 @@ class Test_BookAppointmentAndActions(BaseTest):
 
 
 
-    def test_book_appointment_and_reject(self, service_info, name, service_type, address):
+    def test_book_appointment_and_reject(self, service_info, name, service_type, address, service_names):
         manager = app_manager.AppManager(self.driver)
+        manager.launch_cli_app()
 
         home = HomeScreen(self.driver)
-        manager.launch_cli_app()
         search = home.go_to_search()
 
         search.clear_search_bar()
@@ -164,31 +136,21 @@ class Test_BookAppointmentAndActions(BaseTest):
         map_screen.assert_name(name)
         sp_profile_screen = map_screen.click_on_check_services()
 
-        if service_info[0] == "direct":
-            # Use getattr to dynamically access the service item
-            service_name = service_info[
-                1].upper()  # Convert to uppercase to match the class attribute naming convention
-            service_item = getattr(ServiceItems, service_name, None)
-            print(service_item)
-            if service_item is not None:
-                book_visit_screen = sp_profile_screen.book_service(service_item)
-            else:
-                raise ValueError(f"Service item {service_name} not found in ServiceItems")
+        if service_info == "direct":
+            # No need to split the service_names here; it should already be a list
+            for service_name in service_names:
+                service_name_upper = service_name.upper()
+                service_item = getattr(ServiceItems, service_name_upper, None)
+                if service_item is not None:
+                    sp_profile_screen.book_multiple_services([service_item])
+                else:
+                    raise ValueError(f"Service item {service_name_upper} not found in ServiceItems")
+        book_visit_screen = sp_profile_screen.click_submit_button()
 
-
-        elif service_info[0] == "category_subcategory":
-            category = service_info[1]
-            subcategory = service_info[2]
-            ScrollUtil.swipeDown(2, self.driver)
-            sp_profile_screen.select_service_category(category)
-            book_visit_screen = sp_profile_screen.book_service(subcategory)
-
-        # Handling mobile service type with address
+        # Handling mobile service type with address...
         if service_type == "mobile":
             assert address is not None, "Address must be provided for mobile service"
-            ScrollUtil.scrollToTextByAndroidUIAutomator("usługi mobilne", self.driver)
             book_visit_screen.configure_mobile_visits(address)
-
         confirmation_screen = book_visit_screen.click_book_button()
         confirmation_screen.verify_and_click_go_to_visit_list()
 
@@ -209,11 +171,11 @@ class Test_BookAppointmentAndActions(BaseTest):
 
 
 
-    def test_book_appointment_and_cancel(self, service_info, name, service_type, address):
+    def test_book_appointment_and_cancel(self, service_info, name, service_type, address, service_names):
         manager = app_manager.AppManager(self.driver)
+        manager.launch_cli_app()
 
         home = HomeScreen(self.driver)
-        manager.launch_cli_app()
         search = home.go_to_search()
 
         search.clear_search_bar()
@@ -221,31 +183,21 @@ class Test_BookAppointmentAndActions(BaseTest):
         map_screen.assert_name(name)
         sp_profile_screen = map_screen.click_on_check_services()
 
-        if service_info[0] == "direct":
-            # Use getattr to dynamically access the service item
-            service_name = service_info[
-                1].upper()  # Convert to uppercase to match the class attribute naming convention
-            service_item = getattr(ServiceItems, service_name, None)
-            print(service_item)
-            if service_item is not None:
-                book_visit_screen = sp_profile_screen.book_service(service_item)
-            else:
-                raise ValueError(f"Service item {service_name} not found in ServiceItems")
+        if service_info == "direct":
+            # No need to split the service_names here; it should already be a list
+            for service_name in service_names:
+                service_name_upper = service_name.upper()
+                service_item = getattr(ServiceItems, service_name_upper, None)
+                if service_item is not None:
+                    sp_profile_screen.book_multiple_services([service_item])
+                else:
+                    raise ValueError(f"Service item {service_name_upper} not found in ServiceItems")
+        book_visit_screen = sp_profile_screen.click_submit_button()
 
-
-        elif service_info[0] == "category_subcategory":
-            category = service_info[1]
-            subcategory = service_info[2]
-            ScrollUtil.swipeDown(2, self.driver)
-            sp_profile_screen.select_service_category(category)
-            book_visit_screen = sp_profile_screen.book_service(subcategory)
-
-        # Handling mobile service type with address
+        # Handling mobile service type with address...
         if service_type == "mobile":
             assert address is not None, "Address must be provided for mobile service"
-            ScrollUtil.scrollToTextByAndroidUIAutomator("usługi mobilne", self.driver)
             book_visit_screen.configure_mobile_visits(address)
-
         confirmation_screen = book_visit_screen.click_book_button()
         confirmation_screen.verify_and_click_go_to_visit_list()
 
