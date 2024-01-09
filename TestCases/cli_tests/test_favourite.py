@@ -24,6 +24,7 @@ class Test_Favourite(BaseTest):
         home_screen_cli.go_to_favourites()
         favourite_screen.verify_favourite_sp(var.sp_name)
         favourite_screen.click_favourite_button(var.sp_favourite_id)
+        favourite_screen.remove_sp_from_favourites()
 
     def test_add_to_favorite_in_visits_screen(self):
         home_screen_cli = HomeScreen(self.driver)
@@ -31,6 +32,8 @@ class Test_Favourite(BaseTest):
         visits_screen.click_favourite_button()
         favourite_screen = home_screen_cli.go_to_favourites()
         favourite_screen.verify_favourite_sp(var.sp_name)
+        favourite_screen.click_favourite_button(var.sp_favourite_id)
+        favourite_screen.remove_sp_from_favourites(False)
 
 
 

@@ -14,7 +14,7 @@ statuses = {
 
 sp_name = "Automation SP"
 sp_address = "03, Krakowskie Przedmieście, Warszawa, Polska"
-sp_favourite_id = "fc124053-f8a8-43bc-9c96-8247b9da6b00"
+sp_favourite_id = "be13a0fe-89f1-48e6-b7d4-ef149018fcf5"
 uuid = None
 
 
