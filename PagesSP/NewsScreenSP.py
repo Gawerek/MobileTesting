@@ -89,3 +89,7 @@ class NewsScreenSP(BasePageSP):
         DataSaver.save_to_excel(data, 'Verify Status SP')
         assert status_element.text == correct_status
         print("Status matches:", correct_status)
+
+    def click_close_modal_button(self):
+        close_button_locator = LocatorFactory.create_dashboard_visit_modal_close_button_locator_SP(var.uuid)
+        self.click(close_button_locator)

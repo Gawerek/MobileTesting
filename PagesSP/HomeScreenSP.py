@@ -13,7 +13,7 @@ class HomeScreenSP(BasePageSP):
     calendar_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'CALENDAR_NAVIGATOR')
     chat_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'ROUTE_CHANNEL_LIST')
     clients_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'ROUTE_DATABASE_OF_CLIENTS')
-    profile_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'PROFILE_NAVIGATOR')
+    profile_tab_locator = (AppiumBy.ACCESSIBILITY_ID, 'header-avatar-image')
 
     def __init__(self, driver):
         super().__init__(driver)

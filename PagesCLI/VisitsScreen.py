@@ -51,6 +51,7 @@ class VisitsScreen(BasePage):
 
         visit_status_element = self.find_element(status_locator)
         status = visit_status_element.text
+
         visit_status_id = status_locator[1]
 
         data = {

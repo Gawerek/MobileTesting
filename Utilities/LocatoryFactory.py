@@ -28,32 +28,35 @@ class LocatorFactory:
 
     @staticmethod
     def create_dashboard_visit_modal_visit_info_original_date_locator_SP(uuid):
-        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-original-date")
+        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-original-date-{uuid}")
 
     @staticmethod
     def create_dashboard_visit_modal_visit_info_original_time_locator_SP(uuid):
-        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-original-time")
+        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-original-time-{uuid}")
 
     @staticmethod
     def create_dashboard_visit_modal_visit_info_service_name_locator_SP(uuid):
-        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-service-name")
+        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-service-name-{uuid}")
 
     @staticmethod
     def create_dashboard_visit_modal_visit_info_service_cost_locator_SP(uuid):
-        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-service-name")
+        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-service-name-{uuid}")
 
     @staticmethod
     def create_dashboard_visit_modal_visit_info_service_duration_locator_SP(uuid):
-        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-service-duration")
+        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-service-duration-{uuid}")
 
 
     @staticmethod
     def create_dashboard_visit_modal_visit_info_client_name_locator_SP(uuid):
-        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-client-name")
+        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-client-name-{uuid}")
 
     @staticmethod
+    def create_dashboard_visit_modal_close_button_locator_SP(uuid):
+        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-close-button")
+    @staticmethod
     def create_dashboard_visit_modal_visit_info_service_client_phone_number_locator_SP(uuid):
-        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-client-phone-number")
+        return (AppiumBy.ACCESSIBILITY_ID, f"dashboard-visit-modal-{uuid}-visit-info-client-phone-number-{uuid}")
     @staticmethod
     def create_visit_item_status_locator_CLI(uuid):
         return (AppiumBy.ACCESSIBILITY_ID, f"visit-item-status-{uuid}")
