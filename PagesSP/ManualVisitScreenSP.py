@@ -16,8 +16,8 @@ class ManualVisitScreenSP(BasePageSP):
     mobile_type_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='z dojazdem do klienta']")
     client_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Wybierz lub wyszukaj klienta']")
     phone_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Podaj numer telefonu']")
-    address_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Adres klienta']")
-    drive_price_input = (AppiumBy.XPATH, "//android.widget.EditText[@text='Cena za dojazd']")
+    address_input = (AppiumBy.ACCESSIBILITY_ID, "book-manual-visit-screen-manual-mobile-section-location-autocomplete-location-input-autocomplete")
+    drive_price_input = (AppiumBy.ACCESSIBILITY_ID, "book-manual-visit-screen-manual-mobile-section-mobile-price-input")
     confirm_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='przejdź do listy wizyt']")
     date_locator = (AppiumBy.ACCESSIBILITY_ID, "book-manual-visit-screen-calendar-content-day-2023-12-29-text")
     def __init__(self, driver):
@@ -41,8 +41,9 @@ class ManualVisitScreenSP(BasePageSP):
     def configure_mobile_visits(self, address, price):
         ScrollUtil.scrollToTextByAndroidUIAutomator("z dojazdem do klienta", self.driver)
         self.click(self.mobile_type_button)
+        ScrollUtil.scrollToAccessibilityIdByAndroidUIAutomator("book-manual-visit-screen-manual-mobile-section-location-autocomplete-location-input-autocomplete", self.driver)
         self.type(self.address_input, address)
-        ScrollUtil.scrollToTextByAndroidUIAutomator("Cena za dojazd", self.driver)
+        ScrollUtil.scrollToAccessibilityIdByAndroidUIAutomator("book-manual-visit-screen-manual-mobile-section-mobile-price-input", self.driver)
         self.type(self.drive_price_input, price)
 
 

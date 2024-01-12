@@ -94,7 +94,7 @@ def appium_driver_SP(request):
     desired_caps['appPackage'] = 'bbox.pl.sp.app.development'
     desired_caps['appActivity'] = 'bbox.sp.pl.app.MainActivity' 
     desired_caps['noReset'] = True
-    driver = webdriver.Remote('http://localhost:4725/wd/hub', desired_caps)
+    driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
     request.cls.driver = driver
     driver.implicitly_wait(10)
     yield driver
