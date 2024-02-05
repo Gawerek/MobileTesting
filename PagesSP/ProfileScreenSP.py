@@ -9,9 +9,9 @@ from Variables.variables import *
 
 class ProfileScreenSP(BasePageSP):
     account_name_label = (AppiumBy.ACCESSIBILITY_ID, "account-name")
-    account_work_mode_button= (AppiumBy.ACCESSIBILITY_ID,"account-work-mode-button-text")
+    account_work_mode_button = (AppiumBy.ACCESSIBILITY_ID,"account-work-mode-button-text")
     account_status_label = (AppiumBy.ACCESSIBILITY_ID,"account-status")
-    profile_data_button = (AppiumBy.ACCESSIBILITY_ID, "account-profile-data-button")
+    profile_data_button = (AppiumBy.ACCESSIBILITY_ID, "account-information-button-text")
     opinions_button = (AppiumBy.ACCESSIBILITY_ID,"account-reviews-button")
     settings_button = (AppiumBy.ACCESSIBILITY_ID,"account-settings-button")
     share_button = (AppiumBy.ACCESSIBILITY_ID,"share-button-text")

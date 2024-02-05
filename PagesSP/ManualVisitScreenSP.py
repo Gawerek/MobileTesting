@@ -10,7 +10,7 @@ from Variables.variables import *
 
 class ManualVisitScreenSP(BasePageSP):
     nails_category_button = (AppiumBy.ACCESSIBILITY_ID, "book-manual-visit-screen-accordion-header-1000000-title")
-    hybrid_manicure_category_button = (AppiumBy.ACCESSIBILITY_ID, "book-manual-visit-screen-outline-button-1003000-text")
+    hybrid_manicure_category_button = (AppiumBy.ACCESSIBILITY_ID, "book-manual-visit-screen-outline-button-1003000")
     barber_category_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='Barber']")
     save_button = (AppiumBy.XPATH, "//android.widget.TextView[contains(@text, 'zapisz')]")
     mobile_type_button = (AppiumBy.XPATH, "//android.widget.TextView[@text='z dojazdem do klienta']")

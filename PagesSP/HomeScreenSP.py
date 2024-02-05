@@ -1,6 +1,7 @@
 
 
 from .BasePageSP import BasePageSP
+from .ProfileDataScreenSP import ProfileDataScreenSP
 from .ClientsScreenSP import ClientsScreen
 from .ProfileScreenSP import ProfileScreenSP
 from .NewsScreenSP import NewsScreenSP
@@ -37,7 +38,7 @@ class HomeScreenSP(BasePageSP):
 
     def go_to_profile(self):
         self.click(self.profile_tab_locator)
-        return ProfileScreenSP(self.driver)
+        return ProfileDataScreenSP(self.driver)
 
     def go_to_settings_login(self):
         self.click(self.settings_tab_locator)

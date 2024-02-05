@@ -1,7 +1,7 @@
 import openpyxl
 
 def get_data(sheetName):
-    workbook = openpyxl.load_workbook(r"C:\Projekty_Python\WellmifyTests\Excel\testdata.xlsx")
+    workbook = openpyxl.load_workbook(r"C:\Projekty_Python\WellmifyTests\Excel\testdata.xlsx") #@TODO zmiana na sciezke relatywna
     sheet = workbook[sheetName]
     mainList = []
 

@@ -7,7 +7,7 @@ from Variables.variables import *
 
 class ProfileServicesScreenSP(BasePageSP):
     profile_add_service = (AppiumBy.ACCESSIBILITY_ID, "profile-services-add-service-button-text")
-    lashes_code = (AppiumBy.ACCESSIBILITY_ID, "undefined-4000000")
+    lashes_code = (AppiumBy.ACCESSIBILITY_ID, "profile-services-accordion-header-4000000")
     lashes_henna_code = (AppiumBy.ACCESSIBILITY_ID, "profile-services-service-tag-4001000-text")
     profile_submit_button = (AppiumBy.ACCESSIBILITY_ID, "profile-submit-button-text")
     profile_description_input = (AppiumBy.ACCESSIBILITY_ID, "profile-description-input")
